@@ -1,28 +1,25 @@
 import time
-from flask import Flask,request
+from flask import Flask, request
 import os
-import secrets
 import platform
-# from pygame import mixer
+from pygame import mixer
 import eventlet.wsgi
 import pyttsx3
-
 
 app = Flask(__name__)
 
 
-@app.route("/callout",methods=["POST"])
+@app.route("/callout", methods=["POST"])
 def callout():
     phrase = request.json["phrase"]
     try:
-        # mixer.init()
-        # mixer.music.load('sounds/notification.mp3')
-        # mixer.music.play()
+        mixer.init()
+        mixer.music.load(os.path.join(os.getcwd(), 'sounds', 'notification.mp3'))
+        mixer.music.play()
         time.sleep(0.5)
         engine = pyttsx3.init()
-        import platform
-        platform = platform.system()
-        if platform == "Windows":
+        pl = platform.system()
+        if pl == "Windows":
             engine.setProperty('rate', 130)
         else:
             engine.setProperty('rate', 180)
