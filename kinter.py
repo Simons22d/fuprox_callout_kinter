@@ -10,7 +10,6 @@ canvas1.pack()
 
 
 def hello():
-    root.wm_title("test")
     label1 = tk.Label(root,text='Running ... ', fg='green', font=('helvetica', 12, 'bold'))
     canvas1.create_window(150, 200, window=label1)
     call(["python", f"{os.path.join(os.getcwd(), 'callout.py')}"])
