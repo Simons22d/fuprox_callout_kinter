@@ -3,7 +3,7 @@ from flask import Flask,request
 import os
 import secrets
 import platform
-# from pygame import mixer
+from pygame import mixer
 import eventlet.wsgi
 import pyttsx3
 
@@ -15,9 +15,9 @@ app = Flask(__name__)
 def callout():
     phrase = request.json["phrase"]
     try:
-        # mixer.init()
-        # mixer.music.load('sounds/notification.mp3')
-        # mixer.music.play()
+        mixer.init()
+        mixer.music.load('sounds/notification.mp3')
+        mixer.music.play()
         time.sleep(0.5)
         engine = pyttsx3.init()
         import platform
